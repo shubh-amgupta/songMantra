@@ -6,6 +6,7 @@ $("#signup_submit").on('click', function() {
    if(name.length > 2) {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop sbsorbtion of events and load the page important!
+         $("#user_name").text(name);
          $("#user").addClass('hidden');
          $("#display").removeClass('hidden');
    }else {
@@ -13,10 +14,14 @@ $("#signup_submit").on('click', function() {
    }
 });
 
+var currentSongNumber = 1;
+var willLoop = 0;
+var willShuffle = 0;
+
 
 // Display user's name in right side of the header
 //$("user_name").html($("email_signup").val()); Dynamic
-$("#user_name").text("Shubham");
+//$("#user_name").text("Shubham");
 
 
 // Play and Pause action
@@ -27,16 +32,27 @@ $('.play-icon').on('click', function() {
 
 
 // Play and Pause on SpaceBar
+// $('body').on('keypress', function(event) {
+//             if (event.keyCode == 32) {
+//                 var song = document.querySelector('audio');
+//                 toggleSong();
+//             }
+//         });
+
 $('body').on('keypress', function(event) {
-            if (event.keyCode == 32) {
-                var song = document.querySelector('audio');
-                toggleSong();
-            }
-        });
+   var target = event.target;
+   if (event.keyCode == 32 && target.tagName != 'INPUT') {
+      var song = document.querySelector('audio');
+      toggleSong();
+   }
+});
+
+
 
 
 function toggleSong() {
    var song = document.querySelector('audio');
+   timeJump();
    if(song.paused == true) {
       console.log('Playing');
       $('.play-icon').removeClass('fa-play').addClass('fa-pause');
@@ -215,4 +231,40 @@ $(document).ready(function() {
    });
 });
 
+
+
 $('#songs_filter input').attr('placeholder', "search");
+
+
+
+$('.fa-repeat').on('click',function() {
+    $('.fa-repeat').toggleClass('disabled')
+    willLoop = 1 - willLoop;
+});
+
+
+$('.fa-random').on('click',function() {
+    $('.fa-random').toggleClass('disabled')
+    willShuffle = 1 - willShuffle;
+});
+
+function timeJump() {
+    var song = document.querySelector('audio')
+    song.currentTime = Math.floor(song.duration) - 5;
+};
+
+
+$('audio').on('ended',function() {
+    var audio = document.querySelector('audio');
+    if(currentSongNumber < 4) {
+        var nextSongObj = songs[currentSongNumber];
+        audio.src = nextSongObj.fileName; // Change Source
+        toggleSong(); // Play Next Song
+        changeCurrentSongDetails(nextSongObj); // Update Image
+        currentSongNumber = currentSongNumber + 1; // Change State
+    }
+    else {
+        $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+        audio.currentTime = 0;
+    }
+})

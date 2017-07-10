@@ -65,6 +65,7 @@ body {
 
 #user {
    color: white;
+   background-color: #292b2c;
 }
 
 #user_name {
@@ -341,4 +342,20 @@ table.dataTable tbody tr {
    margin-top: 20px;
    border-radius: 10px;
    height: 25px;
+}
+
+.player-buttons .fa {
+    margin-right: 2rem;
+}
+
+.fa.disabled {
+    color: gray;
+}
+
+.side-icons {
+   font-size: 20px;
+}
+ .player-buttons:hover {
+    font-size: 30px;
+    margin-top: -2px;
 }
