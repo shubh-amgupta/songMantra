@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Song App</title>
+    <link rel="stylesheet" type="text/css" href="font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="user" class="">
+         <!-- Navbar with Login and links  -->
+         <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">SongMantra</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="#">Download</a>
+                 </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                 <input class="form-control mr-sm-2" type="email" id="email_input" placeholder="Email/Username">
+                 <input class="form-control mr-sm-2" type="password" id="password_input" placeholder="Password">
+                 <button class="btn btn-success my-2 my-sm-0" type="submit" id="login_submit">Login</button>
+              </form>
+            </div>
+         </nav>
+
+         <!-- Backgroud signup and login, using bootstrap - Jumbotron -->
+         <div class="jumbotron">
+           <h1 class="display-3">Your music. Your freedom.</h1>
+           <p class="lead">SongMantra provides you with music. Which you can stream, Anywhere. Anytime. Anyway.</p>
+           <hr class="my-4">
+           <p id="base_info">Carry your personalised music anywhere and listen the way you want. SignUp today!</p>
+           <div class="lead" id="signup_input">
+              <form class="form-inline" id="signup_form">
+                <div class="form-group">
+                   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                      <input class="form-control" type="email" id="email_signup" placeholder="Your Email">
+                   </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="signup_submit">Sign Up</button>
+             </form>
+          </div>
+         </div>
+
+         <!-- Container for objective -->
+         <div class="container">
+            <div class="row" id="summary">
+               <h1 class="display-4">Why use SongMantra?</h1><br />
+               <p class="lead" style="margin-left:20px; margin-top:10px;">
+                  Some unique features which SongMantra offers.
+               </p>
+            </div>
+         </div>
+
+         <!-- Features of app using bootstrap - Cards -->
+         <div class="card-deck container">
+           <a href="#"><div class="card">
+             <img class="card-img-top" src="img/card1.jpg" alt="Card image cap">
+             <div class="card-block">
+               <h4 class="card-title">Your Solitude</h4>
+               <p class="card-text">
+                  With SongMantra you can customize your music the way you want. Share with Friends. All let your friends know what you are listening.
+               </p>
+             </div>
+           </div></a>
+           <a href="#"><div class="card">
+             <img class="card-img-top" src="img/card3.jpg" alt="Card image cap">
+             <div class="card-block">
+               <h4 class="card-title">Personalized Music</h4>
+               <p class="card-text">
+                  SongMantra offers customizable song tunes. Be your own DJ!. Customize your songs create new grooves. And show them to the world.
+               </p>
+             </div>
+           </div></a>
+           <a href="#"><div class="card">
+             <img class="card-img-top" src="img/card2.jpg" alt="Card image cap">
+             <div class="card-block">
+               <h4 class="card-title">Easy access</h4>
+               <p class="card-text">SongMantra is completly free service. With easily managable account and music. Editing playlists have never been easy.
+               </p>
+             </div>
+           </div></a>
+         </div>
+
+      </div>
+        <div class="main hidden" id="display">
+           <header>
+                <div id="logo" class="pull-left"> SongMantra </div>
+               <div id="user_name" class="pull-right"> </div>
+           </header>
+            <section class="content">
+                <audio src="song.mp3"></audio>
+                <div class="list-headers">
+                </div>
+                <div class="songsTable">
+                 <table id="songs">
+                <thead class="list-headers">
+                  <tr><td>Song</td>
+                     <td>Album</td>
+                     <td>Duration</td>
+                  </tr>
+               </thead>
+               <tbody>
+               <tr class="song" id="song1">
+                <td class="song-name"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+               </tr>
+               <tr class="song" id="song2">
+                <td class="song-name"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+               </tr>
+               <tr class="song" id="song3">
+                <td class="song-name"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+               </tr>
+               <tr class="song" id="song4">
+                <td class="song-name"></td>
+                <td class="song-album"></td>
+                <td class="song-length"></td>
+               </tr>
+        <!-- </div> -->
+             </tbody>
+          </table>
+              <!-- </div> -->
+            </section>
+            <div class="immersive-images">
+
+            </div>
+            <div class="current-song-wrapper">
+              <img class="current-song-image">
+              <div>
+                 <p class="current-song-name"></p>
+                 <p class="current-song-album"></p>
+             	</div>
+            </div>
+            <footer>
+                <div class="controls">
+                    <div class="player-buttons">
+                        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="progress-wrapper">
+                        <span class="time-elapsed"> </span>
+                        <div class="player-progress">
+                            <div class="progress-filled"> </div>
+                        </div>
+                        <span class="song-duration"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
