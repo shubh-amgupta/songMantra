@@ -4,14 +4,16 @@ $("#login_submit").on('click', function() {
    $("#login_submit").removeClass('error_input_signup');
    var username = $("#email_input").val();
    var password = $("#password_input").val();
-   if(username == "test@acadview.com" && password == "JavascriptRocks") {
+      if(username == "test" && password == "JavascriptRocks") {
+      // if(username == "1" && password == "1") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
          $("#user").addClass('hidden');
          $("#display").removeClass('hidden');
    }else {
-      $("#email_signup").addClass('error_input_signup');
+      $("#email_input").addClass('error_input_signup');
+      $("#password_input").addClass('error_input_signup');
    }
 });
 
@@ -378,10 +380,10 @@ $(document).ready(function(){
       duration: 5000, // Determines length between transitions. In milliseconds.
       parentName: 'EzFade', // Gives the container of slideshow element class of specified string.
       childName: 'EzFadeElm', // Gives the elements of slideshow class of specified string.
-      fadeSpeed: 1000, // Determines lenght of fade. In milliseconds.
+      fadeSpeed: 2500, // Determines lenght of fade. In milliseconds.
       width: '100%', // Gives slideshow a width.
       height: '100%', // Gives slideshow a height.
-      position: 'relative' // Gives slideshow a position.
+      // position: 'relative', // Gives slideshow a position.
 
    });
 });
