@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="font-awesome.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="loading_img.css"> -->
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
@@ -33,8 +34,8 @@
                  </li>
               </ul>
               <form class="form-inline my-2 my-lg-0">
-                 <input class="form-control mr-sm-2" type="email" id="email_input" placeholder="Email/Username">
-                 <input class="form-control mr-sm-2" type="password" id="password_input" placeholder="Password">
+                 <input class="form-control mr-sm-2" type="email" id="email_input" placeholder="test@acadview.com">
+                 <input class="form-control mr-sm-2" type="password" id="password_input" placeholder="JavascriptRocks">
                  <button class="btn btn-success my-2 my-sm-0" type="submit" id="login_submit">Login</button>
               </form>
             </div>
@@ -142,8 +143,17 @@
           </table>
               <!-- </div> -->
             </section>
-            <div class="immersive-images">
+            <div class="immersive-images" >
+               <div id="image-slider">
 
+                  <img src="img/song1/1.jpg" alt="">
+                  <img src="img/song1/2.jpg" alt="">
+                  <img src="img/song1/3.jpg" alt="">
+                  <img src="img/song1/4.jpg" alt="">
+                  <img src="img/song1/5.jpg" alt="">
+                  <img src="img/song1/6.jpg" alt="">
+
+               </div>
             </div>
             <div class="current-song-wrapper">
               <img class="current-song-image">
@@ -163,8 +173,8 @@
                     </div>
                     <div class="progress-wrapper">
                         <span class="time-elapsed"> </span>
-                        <div class="player-progress">
-                            <div class="progress-filled"> </div>
+                        <div class="player-progress clickable">
+                            <div class="progress-filled clickable"> </div>
                         </div>
                         <span class="song-duration"></span>
                         <span class="fa fa-volume-up clickable volume-icon"></span>
@@ -178,9 +188,11 @@
         </div>
     </div>
     <script src="jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="EzFade.js"></script>
     <script src="main.js"></script>
 </body>
 

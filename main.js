@@ -1,12 +1,13 @@
 
 // Login Function - Function to login to User window with only name greater than 2 characters
-$("#signup_submit").on('click', function() {
-   $("#email_signup").removeClass('error_input_signup');
-   var name = $("#email_signup").val();
-   if(name.length > 2) {
+$("#login_submit").on('click', function() {
+   $("#login_submit").removeClass('error_input_signup');
+   var username = $("#email_input").val();
+   var password = $("#password_input").val();
+   if(username == "test@acadview.com" && password == "JavascriptRocks") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
-         $("#user_name").text(name);
+         $("#user_name").text(username);
          $("#user").addClass('hidden');
          $("#display").removeClass('hidden');
    }else {
@@ -121,7 +122,6 @@ function fancyTimeFormat(time)
 function addSongNameClickEvent(songObj,position) {
    var songName = songObj.fileName;
     var id = '#song' + position;
-    console.log(currentSongNumber);
     $(id).click(function() {
       var audio = document.querySelector('audio');
       var currentSong = audio.src;
@@ -371,3 +371,17 @@ $(".player-progress").on('click', function(event) {
    audio.currentTime = (audio.duration * time)/100;
    updateSongProgress();
 })
+
+
+$(document).ready(function(){
+   $('#image-slider').EzFade({
+      duration: 5000, // Determines length between transitions. In milliseconds.
+      parentName: 'EzFade', // Gives the container of slideshow element class of specified string.
+      childName: 'EzFadeElm', // Gives the elements of slideshow class of specified string.
+      fadeSpeed: 1000, // Determines lenght of fade. In milliseconds.
+      width: '100%', // Gives slideshow a width.
+      height: '100%', // Gives slideshow a height.
+      position: 'relative' // Gives slideshow a position.
+
+   });
+});

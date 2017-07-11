@@ -317,14 +317,14 @@ footer {
 
 
 .immersive-images {
-   width: 940px;
-   height: 400px;
+   width: 65%;
+   height: 52%;
    border: 2px solid white;
    float: right;
    margin: 30px;
    position: absolute;
-   left: 440px;
-   top: 110px;
+   left: 30%;
+   top: 15%;
 }
 
 
