@@ -4,8 +4,8 @@ $("#login_submit").on('click', function() {
    $("#login_submit").removeClass('error_input_signup');
    var username = $("#email_input").val();
    var password = $("#password_input").val();
-      if(username == "test" && password == "JavascriptRocks") {
-      // if(username == "1" && password == "1") {
+      // if(username == "test" && password == "JavascriptRocks") {
+      if(username == "1" && password == "1") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
