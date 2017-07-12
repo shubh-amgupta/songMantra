@@ -463,7 +463,14 @@ table.dataTable tbody tr {
 }
 
 
-.image-slider {
-   width: 100%;
-   height: 100%;
+.image-moments {
+  position: absolute;
+  transition: opacity .5s ease-in;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.image-moments + .image-moments {
+   opacity: 0;
 }

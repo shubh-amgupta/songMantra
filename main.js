@@ -4,8 +4,8 @@ $("#login_submit").on('click', function() {
    $("#login_submit").removeClass('error_input_signup');
    var username = $("#email_input").val();
    var password = $("#password_input").val();
-      // if(username == "test" && password == "JavascriptRocks") {
-      if(username == "1" && password == "1") {
+      if(username == "test" && password == "JavascriptRocks") {
+      // if(username == "1" && password == "1") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
@@ -50,10 +50,12 @@ function toggleSong() {
    if(song.paused == true) {
       $('.play-icon').removeClass('fa-play').addClass('fa-pause');
       song.play();
+      createMoments();
    }
    else {
       $('.play-icon').removeClass('fa-pause').addClass('fa-play');
       song.pause();
+      createMoments().stop();
    }
 }
 
@@ -375,15 +377,16 @@ $(".player-progress").on('click', function(event) {
 })
 
 
-$(document).ready(function(){
-   $('#image-slider').EzFade({
-      duration: 5000, // Determines length between transitions. In milliseconds.
-      parentName: 'EzFade', // Gives the container of slideshow element class of specified string.
-      childName: 'EzFadeElm', // Gives the elements of slideshow class of specified string.
-      fadeSpeed: 2500, // Determines lenght of fade. In milliseconds.
-      width: '100%', // Gives slideshow a width.
-      height: '100%', // Gives slideshow a height.
-      // position: 'relative', // Gives slideshow a position.
 
-   });
-});
+// Image Slider Moments generation Codepen - https://codepen.io/anon/pen/MoZvvq
+var current = 0,
+    slides = $('.image-moments');
+function createMoments() {
+   setInterval(function() {
+     for (var i = 0; i < slides.length; i++) {
+       slides[i].style.opacity = 0;
+     }
+     current = (current != slides.length - 1) ? current + 1 : 0;
+     slides[current].style.opacity = 1;
+   }, 4000);
+}
