@@ -4,8 +4,8 @@ $("#login_submit").on('click', function() {
    $("#login_submit").removeClass('error_input_signup');
    var username = $("#email_input").val();
    var password = $("#password_input").val();
-      if(username == "test" && password == "JavascriptRocks") {
-      // if(username == "1" && password == "1") {
+      // if(username == "test" && password == "JavascriptRocks") {
+       if(username == "1" && password == "1") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
@@ -55,7 +55,6 @@ function toggleSong() {
    else {
       $('.play-icon').removeClass('fa-pause').addClass('fa-play');
       song.pause();
-      createMoments().stop();
    }
 }
 
@@ -72,7 +71,7 @@ window.onload = function() {
         song.find('.song-name').text(obj.name);
         song.find('.song-album').text(obj.album);
         song.find('.song-length').text(obj.duration);
-        addSongNameClickEvent(obj,i+1)
+        addSongNameClickEvent(obj,i+1);
     }
    updateCurrentTime();
    setInterval(function() {
@@ -136,6 +135,7 @@ function addSongNameClickEvent(songObj,position) {
          audio.src = songName;
          toggleSong();
          changeCurrentSongDetails(songObj);
+         changeSongDisplay(songObj);
       }
    });
 }
@@ -149,7 +149,8 @@ var songs = [{
         'album': 'Badrinath ki Dulhania',
         'duration': '2:56',
        'fileName': 'song1.mp3',
-       'image' : 'song1.jpg'
+       'image' : 'song1.jpg',
+       'images' : 'song1'
     },
     {
         'name': 'Humma Song',
@@ -157,7 +158,8 @@ var songs = [{
         'album': 'Ok Jaanu',
         'duration': '3:15',
         'fileName': 'song2.mp3',
-       'image' : 'song2.jpg'
+       'image' : 'song2.jpg',
+       'images' : 'song2'
     },
     {
         'name': 'Nashe Si Chadh Gayi',
@@ -165,7 +167,8 @@ var songs = [{
         'album': 'Befikre',
         'duration': '2:34',
         'fileName': 'song3.mp3',
-       'image' : 'song3.jpg'
+       'image' : 'song3.jpg',
+       'images' : 'song3'
     },
     {
         'name': 'The Breakup Song',
@@ -173,7 +176,8 @@ var songs = [{
         'album': 'Ae Dil Hai Mushkil',
         'duration': '2:29',
         'fileName': 'song4.mp3',
-       'image' : 'song4.jpg'
+       'image' : 'song4.jpg',
+       'images' : 'song4'
 }]
 
 
@@ -378,6 +382,17 @@ $(".player-progress").on('click', function(event) {
 
 
 
+function changeSongDisplay(songObj) {
+   var directory = songObj.images;
+   console.log(directory);
+   var images = $('.image-moments');
+   for (var i = 0; i < images.length; i++) {
+     images[i].setAttribute("src", "img/"+directory+"/"+(i + 1)+".jpg");
+   }
+}
+
+
+
 // Image Slider Moments generation Codepen - https://codepen.io/anon/pen/MoZvvq
 var current = 0,
     slides = $('.image-moments');
@@ -388,5 +403,5 @@ function createMoments() {
      }
      current = (current != slides.length - 1) ? current + 1 : 0;
      slides[current].style.opacity = 1;
-   }, 4000);
+  }, 5000);
 }
