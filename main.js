@@ -4,16 +4,19 @@ $("#login_submit").on('click', function() {
    $("#login_submit").removeClass('error_input_signup');
    var username = $("#email_input").val();
    var password = $("#password_input").val();
-       if(username == "test" && password == "JavascriptRocks") {
-       //if(username == "1" && password == "1") {
+       if(username.length > 2 && username === "test@acadview.com" && password === "JavascriptRocks") {
+       //if(username === "1" && password ==="1") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
          $("#user").addClass('hidden');
          $("#display").removeClass('hidden');
+         return false;
    }else {
-      $("#email_input").addClass('error_input_signup');
+      $('#email_input').val(username);
       $("#password_input").addClass('error_input_signup');
+      $("#wrong-id").removeClass('hidden');
+      return false;
    }
 });
 
@@ -73,6 +76,7 @@ window.onload = function() {
         song.find('.song-length').text(obj.duration);
         addSongNameClickEvent(obj,i+1);
     }
+   //updateSongsList();
    updateCurrentTime();
    setInterval(function() {
    updateCurrentTime();
@@ -83,6 +87,7 @@ window.onload = function() {
    var audio = document.querySelector('audio');
    var volume = audio.volume;
    setVolume(volume);
+   changeSongDisplay(songs[0]);
 }
 
 
@@ -272,7 +277,6 @@ function randomExcluded(min, max, excluded) {
 
 // Function - onClick on next icon to play next song
 $('.fa-step-forward').on('click', function() {
-    console.log("clicked next");
     if(currentSongNumber < songs.length) {
       nextSong();
     }
@@ -289,13 +293,12 @@ $('.fa-step-forward').on('click', function() {
 
 // Function - To play next Song
 function nextSong() {
-   console.log("next Song"+currentSongNumber);
    var audio = document.querySelector('audio');
    var nextSongObj = songs[currentSongNumber];
-   console.log(currentSongNumber);
    audio.src = nextSongObj.fileName;
    toggleSong();
    changeCurrentSongDetails(nextSongObj);
+   changeSongDisplay(nextSongObj);
    currentSongNumber += 1;
 
 }
@@ -304,8 +307,6 @@ function nextSong() {
 
 // Function - onClick on back icon to play previous song
 $('.fa-step-backward').on('click', function() {
-    console.log("clicked back");
-    console.log(currentSongNumber);
     if(currentSongNumber > 0) {
       previousSong();
     }
@@ -322,13 +323,12 @@ $('.fa-step-backward').on('click', function() {
 
 // Function - To play previous song
 function previousSong() {
-   console.log("prev Song"+currentSongNumber);
    var audio = document.querySelector('audio');
    var nextSongObj = songs[currentSongNumber-1];
-   console.log(currentSongNumber);
    audio.src = nextSongObj.fileName;
    toggleSong();
    changeCurrentSongDetails(nextSongObj);
+   changeSongDisplay(nextSongObj);
    currentSongNumber -= 1;
 }
 
@@ -370,10 +370,7 @@ function updateSongProgress() {
 $(".player-progress").on('click', function(event) {
    var $this = $(this);
    var width = event.pageX - $this.offset().left;
-   console.log(event.pageX);
-   console.log($this.offset().left);
    var total = $this.width();
-   console.log(total);
    var time = (width/total) * 100;
    var audio = document.querySelector('audio');
    audio.currentTime = (audio.duration * time)/100;
@@ -384,7 +381,6 @@ $(".player-progress").on('click', function(event) {
 
 function changeSongDisplay(songObj) {
    var directory = songObj.images;
-   console.log(directory);
    var images = $('.image-moments');
    for (var i = 0; i < images.length; i++) {
      images[i].setAttribute("src", "img/"+directory+"/"+(i + 1)+".jpg");
@@ -405,3 +401,21 @@ function createMoments() {
      slides[current].style.opacity = 1;
   }, 5000);
 }
+
+
+
+// function updateSongsList() {
+//    var html = $("#songs").html();
+//     html += "<tbody>";
+//     for (var i = 0; i < songs.length; i++) {
+//         html+="<tr class=\"song\" id=\""+songs[i].images+"\">";
+//         html+="<td class='song-name'>"+songs[i].name+"</td>";
+//         html+="<td class='song-album'>"+songs[i].album+"</td>";
+//         html+="<td class='song-length'>"+songs[i].duration+"</td>";
+//
+//       //   html+="<td>"+songs[i].filename+"</td>";
+//         html+="</tr>";
+//     }
+//     html+="</tbody>";
+//     $(".song-list").html(html);
+// }

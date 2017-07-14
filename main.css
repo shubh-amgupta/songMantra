@@ -25,6 +25,14 @@ body {
    display: none;
 }
 
+.alert {
+   height: 80px;
+   padding: 5px;
+   margin-top: 0;
+   margin-left: 950px;
+   margin-right: 16px;
+}
+
 
 .jumbotron {
    background-image: url(img/home_bg.jpg);

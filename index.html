@@ -33,14 +33,18 @@
                   <a class="nav-link" href="#">Download</a>
                  </li>
               </ul>
+
               <form class="form-inline my-2 my-lg-0">
-                 <input class="form-control mr-sm-2" type="email" id="email_input" placeholder="test">
-                 <input class="form-control mr-sm-2" type="password" id="password_input" placeholder="JavascriptRocks">
+                 <input class="form-control mr-sm-2" type="email" id="email_input" placeholder="test@acadview.com" required="">
+                 <input class="form-control mr-sm-2" type="password" id="password_input" placeholder="JavascriptRocks" required="">
                  <button class="btn btn-success my-2 my-sm-0" type="submit" id="login_submit">Login</button>
               </form>
             </div>
          </nav>
 
+         <div class="alert alert-danger hidden" id="wrong-id" role="alert">
+         Wrong id or password <br />Id : <strong>test@acadview.com</strong><br /> Password : <strong>JavascriptRocks</strong>
+         </div>
          <!-- Backgroud signup and login, using bootstrap - Jumbotron -->
          <div class="jumbotron">
            <h1 class="display-3">Your music. Your freedom.</h1>
@@ -107,8 +111,6 @@
            </header>
             <section class="content">
                 <audio src="song.mp3"></audio>
-                <div class="list-headers">
-                </div>
                 <div class="songsTable">
                  <table id="songs">
                 <thead class="list-headers">
@@ -138,9 +140,9 @@
                 <td class="song-album"></td>
                 <td class="song-length"></td>
                </tr>
-        <!-- </div> -->
              </tbody>
           </table>
+       </div>
               <!-- </div> -->
             </section>
             <div class="immersive-images" >
