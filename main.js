@@ -242,6 +242,7 @@ $('audio').on('ended',function() {
         audio.src = nextSongObj.fileName;
         toggleSong();
         changeCurrentSongDetails(nextSongObj);
+        changeSongDisplay(nextSongObj);
         currentSongNumber = nextSongNumber;
     }
     else if(currentSongNumber < 4) {
@@ -249,6 +250,7 @@ $('audio').on('ended',function() {
         audio.src = nextSongObj.fileName;
         toggleSong();
         changeCurrentSongDetails(nextSongObj);
+        changeSongDisplay(nextSongObj);
         currentSongNumber = currentSongNumber + 1;
     }
     else if(willLoop == 1) {
@@ -256,6 +258,7 @@ $('audio').on('ended',function() {
         audio.src = nextSongObj.fileName;
         toggleSong();
         changeCurrentSongDetails(nextSongObj);
+        changeSongDisplay(nextSongObj);
         currentSongNumber =  1;
     }
     else {
