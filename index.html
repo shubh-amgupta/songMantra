@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title> Song App</title>
+    <title>SongMantra</title>
+    <!-- <link rel="shorcut icon" href="img/card1.jpg" /> -->
     <link rel="stylesheet" type="text/css" href="font-awesome.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -13,7 +14,7 @@
 
 <body>
     <div class="wrapper">
-        <div id="user" class="">
+      <div id="user" class="hidden">
          <!-- Navbar with Login and links  -->
          <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,46 +109,45 @@
          </div>
 
       </div>
-        <div class="main hidden" id="display">
+        <div class="main" id="display">
            <header>
                 <div id="logo" class="pull-left"> SongMantra </div>
                <div id="user_name" class="pull-right"> </div>
            </header>
             <section class="content">
-                <audio src="song.mp3"></audio>
+                <audio id="audioElement" src="song.mp3"></audio>
                 <div class="songsTable">
-                 <table id="songs">
-                <thead class="list-headers">
-                  <tr><td>Song</td>
-                     <td>Album</td>
-                     <td>Duration</td>
-                  </tr>
-               </thead>
-               <tbody>
-               <tr class="song" id="song1">
-                <td class="song-name"></td>
-                <td class="song-album"></td>
-                <td class="song-length"></td>
-               </tr>
-               <tr class="song" id="song2">
-                <td class="song-name"></td>
-                <td class="song-album"></td>
-                <td class="song-length"></td>
-               </tr>
-               <tr class="song" id="song3">
-                <td class="song-name"></td>
-                <td class="song-album"></td>
-                <td class="song-length"></td>
-               </tr>
-               <tr class="song" id="song4">
-                <td class="song-name"></td>
-                <td class="song-album"></td>
-                <td class="song-length"></td>
-               </tr>
-             </tbody>
-          </table>
-       </div>
-              <!-- </div> -->
+                   <table id="songs">
+                      <thead class="list-headers">
+                        <tr><td>Song</td>
+                           <td>Album</td>
+                           <td>Duration</td>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     <tr class="song" id="song1">
+                      <td class="song-name"></td>
+                      <td class="song-album"></td>
+                      <td class="song-length"></td>
+                     </tr>
+                     <tr class="song" id="song2">
+                      <td class="song-name"></td>
+                      <td class="song-album"></td>
+                      <td class="song-length"></td>
+                     </tr>
+                     <tr class="song" id="song3">
+                      <td class="song-name"></td>
+                      <td class="song-album"></td>
+                      <td class="song-length"></td>
+                     </tr>
+                     <tr class="song" id="song4">
+                      <td class="song-name"></td>
+                      <td class="song-album"></td>
+                      <td class="song-length"></td>
+                     </tr>
+                   </tbody>
+                   </table>
+                </div>
             </section>
             <div class="immersive-images" >
                <div id="image-slider">
@@ -159,7 +159,20 @@
                   <img class="image-moments" alt="">
 
                </div>
+
+               <div id="visualiser" >
+                  <div id="mp3_player">
+                    <div id="audio_box"></div>
+                    <canvas id="analyser_render" class="hidden"></canvas>
+                  </div>
+               </div>
+
             </div>
+
+            <label class="switch pull-right">
+              <input id="switch_panel" type="checkbox">
+              <span class="slider round"></span>
+            </label>
             <div class="current-song-wrapper">
               <img class="current-song-image">
               <div>
@@ -194,6 +207,7 @@
     </div>
     <script src="jquery.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>

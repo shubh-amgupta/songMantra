@@ -4,8 +4,8 @@ $("#login_submit").on('click', function() {
    $("#login_submit").removeClass('error_input_signup');
    var username = $("#email_input").val();
    var password = $("#password_input").val();
-       if(username.length > 2 && username === "test@acadview.com" && password === "JavascriptRocks") {
-       //if(username === "1" && password ==="1") {
+       //if(username.length > 2 && username === "test@acadview.com" && password === "JavascriptRocks") {
+       if(username === "1" && password ==="1") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
@@ -88,6 +88,7 @@ window.onload = function() {
    var volume = audio.volume;
    setVolume(volume);
    changeSongDisplay(songs[0]);
+   visualiserPlay();
 }
 
 
@@ -206,8 +207,8 @@ $(document).ready(function() {
 
 
 
-//
-$('#songs_filter input').attr('placeholder', "search");
+//To provide search placeholder to dtdtables search input
+// $('#songs_filter input').attr('placeholder', "search");
 
 
 
@@ -382,6 +383,7 @@ $(".player-progress").on('click', function(event) {
 
 
 
+// Function - changeSongDisplay is used to set images of a song on the image viewer
 function changeSongDisplay(songObj) {
    var directory = songObj.images;
    var images = $('.image-moments');
@@ -422,3 +424,54 @@ function createMoments() {
 //     html+="</tbody>";
 //     $(".song-list").html(html);
 // }
+
+
+
+// Toggle button to toggle between Visualiser and Images
+$("#switch_panel").click(function() {
+   if($("#switch_panel").prop('checked') == true) {
+      $("#image-slider").addClass('hidden');
+      $("#analyser_render").removeClass('hidden');
+   }else {
+      $("#image-slider").removeClass('hidden');
+      $("#analyser_render").addClass('hidden');
+   }
+});
+
+
+//Visualiser
+
+var audio = document.querySelector('audio');
+// Establish all variables that your Analyser will use
+var canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
+// Initialize the MP3 player after the page loads all of its HTML into the window
+window.addEventListener("load", initMp3Player, false);
+function initMp3Player(){
+   document.getElementById('audio_box').appendChild(audio);
+   context = new AudioContext(); // AudioContext object instance
+   analyser = context.createAnalyser(); // AnalyserNode method
+   canvas = document.getElementById('analyser_render');
+   ctx = canvas.getContext('2d');
+   // Re-route audio playback into the processing graph of the AudioContext
+   source = context.createMediaElementSource(audio);
+   source.connect(analyser);
+   analyser.connect(context.destination);
+   frameLooper();
+}
+// frameLooper() animates any style of graphics you wish to the audio frequency
+// Looping at the default frame rate that the browser provides(approx. 60 FPS)
+function frameLooper(){
+   window.requestAnimationFrame(frameLooper);
+   fbc_array = new Uint8Array(analyser.frequencyBinCount);
+   analyser.getByteFrequencyData(fbc_array);
+   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+   ctx.fillStyle = 'teal'; // Color of the bars
+   bars = 100;
+   for (var i = 0; i < bars; i++) {
+      bar_x = i * 4;
+      bar_width = 3;
+      bar_height = -(fbc_array[i] / 3);
+      //  fillRect( x, y, width, height ) // Explanation of the parameters below
+      ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
+   }
+}
