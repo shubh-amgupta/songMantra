@@ -5,7 +5,7 @@ $("#login_submit").on('click', function() {
    var username = $("#email_input").val();
    var password = $("#password_input").val();
        //if(username.length > 2 && username === "test@acadview.com" && password === "JavascriptRocks") {
-       if(username === "1" && password ==="1") {
+       if(username === "test" && password ==="test") {
          // window.location.href="user_page.html"; // To go to a new page user_page.html via button click, can be used in future for signup, etc
          // return false; // To stop absorbtion of events and load the page important!
          $("#user_name").text(username);
@@ -440,7 +440,6 @@ $("#switch_panel").click(function() {
 
 
 //Visualiser
-
 var audio = document.querySelector('audio');
 // Establish all variables that your Analyser will use
 var canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
