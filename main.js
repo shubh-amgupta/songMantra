@@ -22,7 +22,7 @@ $("#login_submit").on('click', function() {
 
 
 
-var currentSongNumber = 1; //Used in different functions to check surrent Song Number
+var currentSongNumber = 1; //Used in different functions to check current Song Number
 var willLoop = 0; //To toggle loop function in player
 var willShuffle = 0; //To toggle shuffle function in toggle
 
