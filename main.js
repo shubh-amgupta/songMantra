@@ -63,7 +63,7 @@ function toggleSong() {
 
 
 
-// Onload function performed wheb html document is fully loaded. Idealy all JS should be inside onload
+// Onload function runs web html document is fully loaded. Idealy all JS should be inside onload
 // Function - changeCurrentSongDetails chages the details of a song in object array index i
 window.onload = function() {
    changeCurrentSongDetails(songs[0]);
@@ -88,7 +88,6 @@ window.onload = function() {
    var volume = audio.volume;
    setVolume(volume);
    changeSongDisplay(songs[0]);
-   visualiserPlay();
 }
 
 
